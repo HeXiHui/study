@@ -1,0 +1,107 @@
+内联元素和块级元素
+     内联元素：只占自身内容大小
+                   常用：a,span,img
+     块级元素：占用一行
+                   常用：div,p,h1-h6
+                  注意：一般用块级包内联，a能包块级，p不能包任何块级
+样式的继承
+    -在css中，祖先的样式会作用到后代
+    -背景相关的样式不会继承
+选择器的优先级（权重）
+   1.！important
+   2.内联选择器（1000）
+   3.id选择器（100）
+   4.类和伪类选择器（10）
+   5.元素选择器（1）
+   6.通配符选择器（0）
+   7.继承样式
+选择器
+    -后代选择器
+        -语法:祖先元素 后代元素
+        -常用：div p（div里面所有的p元素）
+    -子代选择器
+        -语法：祖先元素>后代元素
+        -常用：div>p（div里所有的子元素p）
+   -兄弟选择器
+       -语法：前一个+后一个
+       -常用：div+p（紧挨div后的p元素）
+       -语法：前一个~后一个
+       -常用：div~p（div后所有的p元素）
+   -伪类选择器
+       -伪类实际是表示元素处于的某种状态
+       -例子：
+                :link 未被访问的链接
+                :visited 访问过的链接
+                :active 正在点击的链接
+                :hover 滑过的链接
+                :focus 聚焦的链接
+                
+                :before 在什么之前加入
+                :after 在什么之后加入
+               
+               :first-letter 第一个字母
+               :first-line 第一行
+               :first-child 第一个子元素
+               :last-child 最后一个子元素
+               :nth-child() 第几个子元素
+            
+               :first-of-type 
+               :last-of-type
+               :nth-of-type 同一种元素进行排序
+             
+               :not() 排除选择
+高度塌陷
+    -在文档流中，默认父元素高度是被子元素撑开的。但是子元素脱离文档流就会导致父级高度塌陷
+        -方案：
+                 1.w3c推荐：
+                                -在父元素最后添加一个空div，并在这个div里添加clear:both
+                                 缺点：代码冗余
+                 2.使用after：
+                                  -使用after向父元素后面加一个空的块元素
+                                  例子：.box:after{display:block;clear:both}
+                3.开启父级bfc
+                                    -每个元素都有一个隐藏属性bfc（Block Formatting Context）块级格式化环境。默认是关闭。
+                                    -开启：display:inline-block
+                                               绝对定位
+                                              overflow:hidden(副作用最小)
+                                              设置元素浮动
+                                   -开启作用：
+                                                  -子元素的垂直外边距不会与父元素的垂直外边距重叠
+                                                  -不会被浮动元素覆盖
+                                                  -可以包含浮动子元素
+css盒子模型
+          基本概念：标准模型+IE模型
+          区别：计算宽高不同
+                    标准模型：height=content
+                    IE模型：height=content+padding+border
+         如何设置：
+                       标准模型：box-sizing:context-box
+                       IE模型：box-sizing:border-box
+        如何获取宽高：
+                             dom.stype.height(只能拿到内联样式)
+                             dom.currentStyle.heighy(IE)
+                              window.getComputedStyle(dom).height(通用)
+                             dom.getBoundingClienRect().height(计算一个元素的绝对位子)
+        BFC（边距重叠解决方案）：
+                                               1设置float，浮动起来
+                                               2display:inline-block/tabble
+                                               3overflow:hidden/auto
+                                               4position:absolue
+DOM
+        基本概念：Dom事件的级别
+        DOM事件模型：捕获和冒泡
+        DOM事件流：捕获和冒泡的具体流程
+        DOM事件类：
+                           事件级别:
+                                         DOM0 element.onclick=function(){}
+                                         DOM2 element.addEventListener('click',function(){},false)
+                                         DOM3 elemetn.addEventListener('keyup',function(){},false)
+                          事件模型：捕获和冒泡
+                          事件流：捕获=》目标阶段=》冒泡
+                                       具体过程：windom->document->html->body->目标元素->body->html->document->windom
+                        Event对象的常用应用：
+                                                         event.preventDefault()阻止默认行为
+                                                         event.stopPropagation()阻止冒泡
+                                                         event.stoplmmediatePropagation()绑定优先
+                                                         event.currentTarget 当前绑定的事件 就是父级元素
+                                                         event.target当前触发的事件

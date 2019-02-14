@@ -1,0 +1,111 @@
+<!DOCTYPE html><!--声名html版本-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="with=device-with,intial-scale=1.0"><!--name是把content关连到一个名称，content里面的属性是自适应移动端-->
+        <meta name="keyword" content="关键字"><!-- 关键字-->
+        <meta http-equiv="refresh" content="秒数，url=网址">
+        <title></title>
+        <style>
+            *{margin: 0;padding: 0;font-size: 36px}
+            /*float布局
+            缺点：脱离文档流，浮动元素与其它元素位置关系复杂（高度未知，不可行）
+            .right{float: right;height: 300px;width: 33.3%;background: coral}
+            .content{float:right;height: 300px;width: 33.3%;background:red}
+            .left{float: left;height: 300px;width: 33.3%;background:bisque}
+            */
+            /*绝对定位布局
+            缺点：脱离文档（高度未知，不可行）
+            .box{
+                position: relative;
+            }
+            .right{
+                position: absolute;
+                right: 0;
+                height: 300px;
+                width: 33.3%;
+                background: coral
+            }
+            .content{
+                position: absolute;
+                left: 33.3%;
+                right: 33.3%;
+                height: 300px;
+                background:red
+            }
+            .left{
+                position: absolute;
+                left: 0;
+                height: 300px;
+                width: 33.3%;
+                background:bisque
+            }
+            */
+            /*flex布局
+            比较完美，在移动端多是flex布局（高度未知，可行）
+            .box{
+                display:flex
+            }
+            .right{
+                flex: 1;
+                background:bisque
+            }
+            .content{
+                flex: 1;
+                background:red
+            }
+            .left{
+                flex: 1;
+                background: coral
+            }
+            */
+            /*网格布局
+            缺点：（高度未知，不可行）
+            .box{
+                display: grid;
+                width: 100%;
+                grid-template-rows: 100px;
+                grid-template-columns: 33.3%  33.3%  33.3%
+            }
+            .right{
+                background:bisque
+            }
+            .content{
+                background:red
+            }
+            .left{
+                background: coral
+            }
+            */
+            /*表格布局
+            缺点：当其中一个单元高度超出时，其它单元高度也会变化（高度未知，可行）
+            .box{
+                display: table;
+                width: 100%;
+            }
+            .right{
+                display: table-cell;
+                width: 33.3%;
+                background:bisque
+            }
+            .content{
+                display: table-cell;
+                width: 33.3%;
+                background:red
+            }
+            .left{
+                display: table-cell;
+                width: 33.3%;
+                background: coral
+            }
+            */
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="right">右</div>
+            <div class="content">中</div>
+            <div class="left">左</div>
+        </div>    
+    </body>
+</html>
