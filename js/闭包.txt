@@ -1,0 +1,22 @@
+闭包
+      概念：定义在一个函数内的函数（或者说是能够读取其他函数内部变量的函数）
+      作用：
+              -读取其他函数内部变量
+              -让变量始终保持在内存中
+     注意：
+            -变量保存会消耗内存，不能滥用
+            -闭包会在外部改变父级函数的内部变量
+     例子：
+            1.var name='window'
+              var object={name:'object'
+                                getname:'function (){
+                                                              return function(){
+                                                                                       return this.name}}}'
+             alert(object.getname())
+           2.var name='window'
+              var object={name:'object'
+                                getname:'function (){
+                                                              return function(){
+                                                                                       var that=this
+                                                                                       return this.name}}}'
+             alert(object.getname())

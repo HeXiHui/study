@@ -1,0 +1,48 @@
+创建对象三种方法：
+                           1.字面量
+                             var a={name:'a'}
+                             var A=new Object({name:'A'})
+                           2.构建函数
+                             var B=function () {this.name='b'}
+                             var B=new B()
+                           3.Object.create
+                              var c={name:'c'}
+                              var C=Object.create(c)
+                  prototype                        __proto__
+          ============》原型对象==========》原型对象
+           《=====constructor ^
+  构造函数                           ｜__proto__ 
+                 new                    |
+           ============》 实例
+原型链通俗理解：原型组成的关系链
+原型链作用：通过一个构建函数new多个实例，在共同的__proto__（原型）上加方法、属性，所有的实例都有这个方法，属性。
+   
+JS引擎分析方式：访问一个实例的属性时，先在本身找没有再去原型中找，还没有再去上一级原型找。
+补充：只有函数有prototype，对象没有。但是函数也有__propo__，因为函数也是对象。
+
+instanceof 原理
+                instanceof 
+  __proto__--------->  prototype------------->
+  实例对象----------->构造函数                       原型
+作用：instanceof是判断实例对象的__proto__和构造函数的prototype的引用地址是否是同一个（是返回true否返回false）
+格式：实例 instanceof 构造函数  
+
+construtor
+作用：判断实例是哪个构造函数生成的
+ 格式：obj.__proto__.construtor===构造函数
+
+new运算符
+  原理：
+          -一个新对象被创建，它继承自foo.prototype
+          -构造函数返回一个对象。在执行时，相应的参数会被传入，同时上下文（this）会指向这个新实例。
+          -new foo等于new foo()用在不传递参数的时候
+          -如果构造函数返回一个对象，这个对象会取代整个new出来的结果。如果没有，那new出来的结果为步骤1.
+new运算模拟
+var new1=function(fun) {
+      var o=Object.create(fun.prototype);//创建对象
+      var k=fun.call(o);//改变this方向，结果付给k
+      if(typeof k==='object'){return k}//判断k是否是对象
+      else{reture o}//还是返回构造函数的结果                       
+
+
+}

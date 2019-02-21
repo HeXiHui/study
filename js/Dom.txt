@@ -1,0 +1,19 @@
+DOM是一个使程序和脚本有能力去动态改变和访问文档的内容.结构及样式的接口。而BOM定义了JS可以进行操作的浏览器和各个功能部件的接口。
+DOM
+        基本概念：Dom事件的级别
+        DOM事件模型：捕获和冒泡
+        DOM事件流：捕获和冒泡的具体流程
+        DOM事件类：
+                           事件级别:
+                                         DOM0 element.onclick=function(){}
+                                         DOM2 element.addEventListener('click',function(){},false)
+                                         DOM3 elemetn.addEventListener('keyup',function(){},false)
+                          事件模型：捕获和冒泡
+                          事件流：捕获=》目标阶段=》冒泡
+                                       具体过程：windom->document->html->body->目标元素->body->html->document->windom
+                        Event对象的常用应用：
+                                                         event.preventDefault()阻止默认行为
+                                                         event.stopPropagation()阻止冒泡
+                                                         event.stoplmmediatePropagation()绑定优先
+                                                         event.currentTarget 当前绑定事件的目标元素
+                                                         event.target当前触发事件目标元素

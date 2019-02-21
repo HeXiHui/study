@@ -1,0 +1,16 @@
+事件
+      概念：用户或浏览器自身执行的某种动作，如click，mouseover
+      作用：事件是js和dom之间交互的桥梁
+事件流
+     概念：是从页面中接收事件的顺序
+     事件模型：1.捕获
+                     2.冒泡
+         捕获流程：window->document->html->body->....
+         冒泡流程：....->body->html->document->window
+事件代理
+         原理：就是用到事件冒泡和目标元素，把事件处理器添加到父级元素，等待子元素事件冒泡，并且父级能通过target判                   断是哪个子元素。
+         常用：
+                 event.stopPropogation()阻止冒泡
+                 event.preventDefault(）阻止默认行为
+                 event.currentTarget当前绑定事件目标元素
+                 event.target当前触发事件的目标元素
