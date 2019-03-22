@@ -1,0 +1,29 @@
+//全局
+Vue.extend()//创建一个构造函数
+Vue.nexttick()//在下次DOM更新循环结束后执行回调
+Vue.set(target,key,value)//在响应式对象中设置一个属性
+Vue.delete(target,key)//删除对象中的一个属性
+Vue.directive(id,[definition])//注册或获取全局指令
+Vue.filter(id,[definition])//注册或获取全局过滤器
+Vue.componets(id,[definition])//注册或获取组件
+Vue.use(plugin)//安装插件
+Vue.mixin(mixin)//全局注册一个混入
+Vue.compile(template)//在render函数中编译模板字符串。（只在独立构建时有效）
+Vue.observable(object)//
+//选项、数据
+data
+ 类型：Object/Function(组件的定义只接受function)
+ 详细：对象必须是纯粹的对象（含有零个或多个的key/value对），实例创建之后，可以通过vm.$data访问原始数据对象。
+       当一个组件被定义，data必须声明为返回一个初始数据对象的函数，因为组件可能被用来创建多个实例。
+props
+ 类型：Array<string>|Object
+ 详细：可以是数组或对象，用来接收父组件的数据。对象允许配置高级选项，如类型检测、自定校验和设置默认值
+propsData
+ 类型：{[key:string]:any}(只用于new创建的实例中)
+ 详细：创建实例时传递props。主要作用是方便测试。
+computed
+ 类型：{[key:string]:Function|{get:Function,set:Function}}
+ 详细：计算属性将被混入到Vue实例中
+methods
+ 类型:{[key:string]:Function}
+ 详细：methods将被混入Vue实例中，可以通过VM实例访问这些方法，或者在指令表达式中使用。方法中的this自动绑定为Vue实例。（不应该使用箭头函数来定义methods函数）

@@ -1,0 +1,24 @@
+每个Vue实例在被创建之前都要经过一系列的初始化过程，这个就是vue的生命周期。
+所有钩子函数：
+ 1.beforeCreate
+    created
+ 2.beforeMount
+    mounted
+ 3.beforeUpdate
+    update
+ 4.beforeDestroy
+    destroyed
+过程：
+ 1.在beforeCreate和created钩子函数之间的生命周期
+    在这个 生命周期中进行初始化事件和数据观测，在created的时候数据已经各data属性进行绑定（放在砌筑中属性当值发生变化的同时，视图也变化）
+ 2.在creates和beforeMount间的生命周期
+    1.首先判断对象有没el选项，有向下编译没有停止编译也就是停止生命周期直到该个vue实例上调用vm.$mount(el)才向下编译。
+    2.再判断有没template选项，有将其作为模板编译成render函数，没有将外部html作为模板编译（render函数选项比template比outer html的优先级高）
+ 3.beforeMount和mountes钩子函数之间的生命周期
+    给vue实例对象添加$el成员，并替换挂载的DOM元素。
+ 4.mounted
+    挂载
+ 5.beforeUpdate和update钩子函数间的生命周期
+    beforeUpdate监听数据，当数据变化时会触发对应组件的重新渲染，先后调用beforeUpdate update
+ 6.beforeDestroy和destroyed钩子函数的生命周期
+    在beforeDestroy实例销毁前，实例仍然可以用，destroyed实例销毁
