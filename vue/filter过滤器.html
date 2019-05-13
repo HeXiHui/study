@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{name|capitaliae(2)}}
+    </div>
+    <script>
+        //指令各过滤器中的this是window
+        Vue.filter('capitalize',function(value,lenght){
+            return value.slice(0,lenght).toUpperCase()+value.slice(len)
+        })//过滤器 不会改变原数据 只改变数据的展示形式
+    </script>
+</body>
+</html>

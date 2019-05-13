@@ -1,0 +1,15 @@
+vm.$el挂载的数据
+vm.$option vue的选项
+vm.$nextTick() 下一个微任务  （数据变化后更新视图操作是异步执行的）
+vm.$watch('name',(newvalue,oldvalue)=>{})  监控
+ 
+指令
+v-once 只渲染一次（常用于静态）
+v-html 
+v-if  v-else  判断是否渲染（不渲染dom不存在）
+v-show 改变的是样式，显示不显示dom都是存在
+v-module 数据双向绑定 （@input与:value的一个语法糖）
+修饰符：.number 转数字类型  .trim 去前空格 如:v-module.number.trim
+ 
+ computed  有缓存，如果值没有变化会从缓存中取值不用再计算（Object.defineProperty实现）
+computed与watch区别 watch可以异步

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        <input type="text" v-slice='msg'>
+    </div>
+    <script>
+    // 指令 全局 局部
+    // 默认函数形式=update+bind
+    // inserted 插入
+    Vue.directive('slice',{
+        bind(el,bindings,vnode){//只当用户绑定指令时生效
+            let ctx=vnode.context;//当前上下文
+            el.addEventListener('input',(e)=>{
+                let val=e.target.value.slice(0,3);//输入框中内容
+                ctx[bindings.expression]=val;
+                el.value=val
+            });
+
+            //赋予默认值
+            el.value=ctx[bindings.expression].slice(0,3)
+            
+        },
+        updte(el,bindings,vnode){
+            let ctx=vnode.expression;
+            el.value=ctx[bindings.expression];//双向绑定
+        }
+    })
+    </script>
+</body>
+</html>
